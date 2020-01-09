@@ -1,2 +1,4 @@
-# telco-customer-churn
-uni project related to data mining
+# Telco Customer Churn
+Uni project related to data mining.
+
+****Used database:**** https://www.kaggle.com/blastchar/telco-customer-churn
