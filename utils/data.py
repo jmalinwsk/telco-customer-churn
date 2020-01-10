@@ -6,7 +6,6 @@ class Data:
         self.values = {
             'all_values': None,
             'columns': [
-                    'customerID',
                     'gender',
                     'SeniorCitizen',
                     'Partner',
@@ -35,7 +34,7 @@ class Data:
     def get_data(self):
         self.values['all_values'] = pd.read_csv(
             'database/WA_Fn-UseC_-Telco-Customer-Churn.csv',
-            na_values=self.values['missing_values'])
+            na_values=self.values['missing_values']).drop(columns=['customerID'])
 
     def fill_missing_values(self):
         median = self.values['all_values'].dropna().median()
