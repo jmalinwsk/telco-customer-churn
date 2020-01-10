@@ -1,3 +1,5 @@
+missing_values = ['NA', 'na', 'n/a', 'N/A', 'null', 'NULL', '', '-']
+
 columns = [
         'customerID',
         'gender',
