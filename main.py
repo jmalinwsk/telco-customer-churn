@@ -1,23 +1,25 @@
-from utils import preprocessing, statistics
+from utils import statistics
+from utils.data import Data
 
 
-def main():
-    data = preprocessing.get_data()
+class Main:
+    def __init__(self):
+        self.data = Data()
 
-    all_inputs = preprocessing.get_inputs(data)
-    all_classes = preprocessing.get_classes(data)
-    preprocessing.check_missing_values(data)
-    preprocessing.fill_missing_values(data)
-    preprocessing.check_missing_values(data)
+    def main(self):
+        self.data.get_data()
+        self.data.fill_missing_values()
+        self.data.get_all_inputs()
+        self.data.get_all_classes()
 
-    statistics.count_values(data)
-    statistics.count_values_in_column(data)
-    statistics.mean(data)
-    statistics.median(data)
-    statistics.std(data)
-    statistics.min_value(data)
-    statistics.max_value(data)
+        statistics.count_values(self.data)
+        statistics.count_values_in_column(self.data)
+        statistics.mean(self.data)
+        statistics.median(self.data)
+        statistics.std(self.data)
+        statistics.min_value(self.data)
+        statistics.max_value(self.data)
 
 
 if __name__ == '__main__':
-    main()
+    Main().main()

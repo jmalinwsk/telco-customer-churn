@@ -1,50 +1,42 @@
-import pandas
-
-from utils import data_properties
-
-
 def count_values(data):
     print('\n\n - - AMOUNT OF DATA - -')
-    print(data.count())
+    print(data.values['all_values'].count())
 
 
 def count_values_in_column(data):
     print('\n\n - - VALUES IN COLUMNS - -')
-    for column in data_properties.columns:
-        print(data[column].value_counts(), '\n')
+    for column in data.values['columns']:
+        print(data.values['all_values'][column].value_counts(), '\n')
 
 
 def mean(data):
     print('\n\n - - MEAN - -')
-    print(data_properties.columns[5], ': ', data[data_properties.columns[5]].mean())
-    print(data_properties.columns[18], ': ', data[data_properties.columns[18]].mean())
-    print(data_properties.columns[19], ': ', data[data_properties.columns[19]].mean())
+    print('tenure: ', data.values['all_values']['tenure'].mean())
+    print('MonthlyCharges: ', data.values['all_values']['MonthlyCharges'].mean())
+    print('TotalCharges: ', data.values['all_values']['TotalCharges'].mean())
 
 
 def median(data):
     print('\n\n - - MEDIAN - -')
-    print(data_properties.columns[5], ': ', data[data_properties.columns[5]].median())
-    print(data_properties.columns[18], ': ', data[data_properties.columns[18]].median())
-    print(data_properties.columns[19], ': ', data[data_properties.columns[19]].median())
+    print('tenure: ', data.values['all_values']['tenure'].median())
+    print('MonthlyCharges: ', data.values['all_values']['MonthlyCharges'].median())
+    print('TotalCharges: ', data.values['all_values']['TotalCharges'].median())
 
 
 def std(data):
     print('\n\n - - STANDARD DEVIATION - -')
-    print(data_properties.columns[5], ': ', data[data_properties.columns[5]].std())
-    print(data_properties.columns[18], ': ', data[data_properties.columns[18]].std())
-    print(data_properties.columns[19], ': ', data[data_properties.columns[19]].std())
+    print('tenure: ', data.values['all_values']['tenure'].std())
+    print('MonthlyCharges: ', data.values['all_values']['MonthlyCharges'].std())
+    print('TotalCharges: ', data.values['all_values']['TotalCharges'].std())
 
 
 def min_value(data):
     print('\n\n - - MIN - -')
-    for column in data_properties.columns:
-        print(column, ': ', data[column].min())
+    for column in data.values['columns']:
+        print(column, ': ', data.values['all_values'][column].min())
 
 
 def max_value(data):
     print('\n\n - - MIN - -')
-    for column in data_properties.columns:
-        print(column, ': ', data[column].max())
-
-
-
+    for column in data.values['columns']:
+        print(column, ': ', data.values['all_values'][column].max())
