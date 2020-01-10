@@ -17,4 +17,10 @@ def get_classes(data):
 
 
 def check_missing_values(data):
+    print('\n - - MISSING VALUES - -')
     print(data.isna().any())
+
+
+def fill_missing_values(data):
+    median = data.dropna().median()
+    data.fillna(median)

@@ -1,4 +1,4 @@
-missing_values = ['NA', 'na', 'n/a', 'N/A', 'null', 'NULL', '', '-']
+missing_values = ['NA', 'na', 'n/a', 'N/A', 'null', 'NULL', '', '-', ' ']
 
 columns = [
         'customerID',
