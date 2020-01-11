@@ -1,3 +1,5 @@
+import math
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -28,7 +30,7 @@ class Data:
                     'MonthlyCharges',
                     'TotalCharges',
                     'Churn'],
-            'missing_values': ['NA', 'na', 'n/a', 'N/A', 'null', 'NULL', '', '-', ' '],
+            'missing_values': ['NA', 'na', 'n/a', 'N/A', 'null', 'NULL', '', '-', ' ', 'NaN'],
             'all_inputs': None,
             'all_classes': None,
             'train_inputs': None,
@@ -43,8 +45,8 @@ class Data:
             na_values=self.values['missing_values']).drop(columns=['customerID'])
 
     def fill_missing_values(self):
-        median = self.values['all_values'].dropna().median()
-        self.values['all_values'].fillna(median)
+        median = self.values['all_values'].median()
+        self.values['all_values'] = self.values['all_values'].fillna(median)
 
     def get_all_inputs(self):
         self.values['all_inputs'] = self.values['all_values'][self.values['columns']].values
