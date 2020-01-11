@@ -1,7 +1,13 @@
+import os
+
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
+from tensorflow import keras
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 def decision_tree(data):
@@ -29,3 +35,21 @@ def k_nn(data, neighbors):
     y_pred = knn.predict(data.values['test_inputs'])
     print('Accuracy: ', accuracy_score(data.values['test_classes'], y_pred))
     print('Confusion matrix:\n', confusion_matrix(data.values['test_classes'], y_pred))
+
+
+def neural_network(data):
+    print('\n\n - - NEURAL NETWORK - -')
+    model = keras.Sequential()
+    model.add(keras.layers.Input(shape=[19]))
+    model.add(keras.layers.Dense(units=128, activation='relu'))
+    model.add(keras.layers.Dense(units=3, activation='softmax'))
+    model.compile(optimizer='Adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    model.fit(data.values['train_inputs'],
+              data.values['train_classes'],
+              validation_data=(data.values['test_inputs'], data.values['test_classes']),
+              epochs=150,
+              verbose=0)
+    test_loss, test_acc = model.evaluate(data.values['test_inputs'], data.values['test_classes'], verbose=0)
+    classes_pred = model.predict_classes(data.values['test_inputs'], verbose=0)
+    print('Accuracy: ', test_acc)
+    print('Confusion matrix:\n', confusion_matrix(data.values['test_classes'], classes_pred))

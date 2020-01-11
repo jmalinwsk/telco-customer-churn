@@ -26,6 +26,7 @@ class Main:
         classification.naive_bayes(self.data)
         classification.k_nn(self.data, 10)
         classification.k_nn(self.data, 50)
+        classification.neural_network(self.data)
 
 
 if __name__ == '__main__':
