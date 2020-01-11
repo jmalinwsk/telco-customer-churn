@@ -27,6 +27,7 @@ class Main:
         classification.k_nn(self.data, 10)
         classification.k_nn(self.data, 50)
         classification.neural_network(self.data)
+        classification.random_forest(self.data)
 
 
 if __name__ == '__main__':

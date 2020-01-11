@@ -53,3 +53,12 @@ def neural_network(data):
     classes_pred = model.predict_classes(data.values['test_inputs'], verbose=0)
     print('Accuracy: ', test_acc)
     print('Confusion matrix:\n', confusion_matrix(data.values['test_classes'], classes_pred))
+
+
+def random_forest(data):
+    print('\n\n - - RANDOM FOREST - -')
+    rf = RandomForestClassifier()
+    rf.fit(data.values['train_inputs'], data.values['train_classes'])
+    y_pred = rf.predict(data.values['test_inputs'])
+    print('Accuracy: ', accuracy_score(data.values['test_classes'], y_pred))
+    print('Confusion matrix:\n', confusion_matrix(data.values['test_classes'], y_pred))
