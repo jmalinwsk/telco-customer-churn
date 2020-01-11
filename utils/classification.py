@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from tensorflow import keras
 
@@ -60,5 +61,14 @@ def random_forest(data):
     rf = RandomForestClassifier()
     rf.fit(data.values['train_inputs'], data.values['train_classes'])
     y_pred = rf.predict(data.values['test_inputs'])
+    print('Accuracy: ', accuracy_score(data.values['test_classes'], y_pred))
+    print('Confusion matrix:\n', confusion_matrix(data.values['test_classes'], y_pred))
+
+
+def svm(data):
+    print('\n\n - - SVM - -')
+    svm = SVC(kernel='linear')
+    svm.fit(data.values['train_inputs'], data.values['train_classes'])
+    y_pred = svm.predict(data.values['test_inputs'])
     print('Accuracy: ', accuracy_score(data.values['test_classes'], y_pred))
     print('Confusion matrix:\n', confusion_matrix(data.values['test_classes'], y_pred))
