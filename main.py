@@ -22,9 +22,10 @@ class Main:
         statistics.min_value(self.data)
         statistics.max_value(self.data)
 
-        self.data.values['all_values'].to_csv('plik.csv')
         classification.decision_tree(self.data)
         classification.naive_bayes(self.data)
+        classification.k_nn(self.data, 10)
+        classification.k_nn(self.data, 50)
 
 
 if __name__ == '__main__':
