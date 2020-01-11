@@ -28,8 +28,7 @@ class Data:
                     'PaperlessBilling',
                     'PaymentMethod',
                     'MonthlyCharges',
-                    'TotalCharges',
-                    'Churn'],
+                    'TotalCharges'],
             'missing_values': ['NA', 'na', 'n/a', 'N/A', 'null', 'NULL', '', '-', ' ', 'NaN'],
             'all_inputs': None,
             'all_classes': None,
@@ -57,7 +56,7 @@ class Data:
     def split_data(self):
         (self.values['train_inputs'], self.values['test_inputs'],
          self.values['train_classes'], self.values['test_classes']) = \
-            train_test_split(self.values['all_inputs'], self.values['all_classes'], train_size=0.7, random_state=1)
+            train_test_split(self.values['all_inputs'], self.values['all_classes'], train_size=0.7)
 
     def encode_values(self):
         le = LabelEncoder()
