@@ -1,6 +1,5 @@
-import math
-
 import pandas as pd
+from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
@@ -10,32 +9,33 @@ class Data:
         self.values = {
             'all_values': None,
             'columns': [
-                    'gender',
-                    'SeniorCitizen',
-                    'Partner',
-                    'Dependents',
-                    'tenure',
-                    'PhoneService',
-                    'MultipleLines',
-                    'InternetService',
-                    'OnlineSecurity',
-                    'OnlineBackup',
-                    'DeviceProtection',
-                    'TechSupport',
-                    'StreamingTV',
-                    'StreamingMovies',
-                    'Contract',
-                    'PaperlessBilling',
-                    'PaymentMethod',
-                    'MonthlyCharges',
-                    'TotalCharges'],
+                'gender',
+                'SeniorCitizen',
+                'Partner',
+                'Dependents',
+                'tenure',
+                'PhoneService',
+                'MultipleLines',
+                'InternetService',
+                'OnlineSecurity',
+                'OnlineBackup',
+                'DeviceProtection',
+                'TechSupport',
+                'StreamingTV',
+                'StreamingMovies',
+                'Contract',
+                'PaperlessBilling',
+                'PaymentMethod',
+                'MonthlyCharges',
+                'TotalCharges'],
             'missing_values': ['NA', 'na', 'n/a', 'N/A', 'null', 'NULL', '', '-', ' ', 'NaN'],
             'all_inputs': None,
             'all_classes': None,
             'train_inputs': None,
             'test_inputs': None,
             'train_classes': None,
-            'test_classes': None
+            'test_classes': None,
+            'all_inputs_2d': None
         }
 
     def get_data(self):
@@ -76,3 +76,8 @@ class Data:
         self.values['all_values']['PaperlessBilling'] = le.fit_transform(self.values['all_values']['PaperlessBilling'])
         self.values['all_values']['PaymentMethod'] = le.fit_transform(self.values['all_values']['PaymentMethod'])
         self.values['all_values']['Churn'] = le.fit_transform(self.values['all_values']['Churn'])
+
+    def change_to_2d(self):
+        pca = PCA(n_components=20)
+        data = pca.fit_transform(self.values['all_inputs'])
+        self.values['all_inputs_2d'] = pd.DataFrame(data=data, columns=['x', 'y'])
