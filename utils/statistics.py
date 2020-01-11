@@ -32,11 +32,13 @@ def std(data):
 
 def min_value(data):
     print('\n\n - - MIN - -')
-    for column in data.values['columns']:
-        print(column, ': ', data.values['all_values'][column].min())
+    print('tenure: ', data.values['all_values']['tenure'].min())
+    print('MonthlyCharges: ', data.values['all_values']['MonthlyCharges'].min())
+    print('TotalCharges: ', data.values['all_values']['TotalCharges'].min())
 
 
 def max_value(data):
     print('\n\n - - MIN - -')
-    for column in data.values['columns']:
-        print(column, ': ', data.values['all_values'][column].max())
+    print('tenure: ', data.values['all_values']['tenure'].max())
+    print('MonthlyCharges: ', data.values['all_values']['MonthlyCharges'].max())
+    print('TotalCharges: ', data.values['all_values']['TotalCharges'].max())
