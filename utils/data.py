@@ -56,3 +56,22 @@ class Data:
         (self.values['train_inputs'], self.values['test_inputs'],
          self.values['train_classes'], self.values['test_classes']) = \
             train_test_split(self.values['all_inputs'], self.values['all_classes'], train_size=0.7, random_state=1)
+
+    def encode_values(self):
+        le = LabelEncoder()
+        self.values['all_values']['gender'] = le.fit_transform(self.values['all_values']['gender'])
+        self.values['all_values']['Partner'] = le.fit_transform(self.values['all_values']['Partner'])
+        self.values['all_values']['Dependents'] = le.fit_transform(self.values['all_values']['Dependents'])
+        self.values['all_values']['PhoneService'] = le.fit_transform(self.values['all_values']['PhoneService'])
+        self.values['all_values']['MultipleLines'] = le.fit_transform(self.values['all_values']['MultipleLines'])
+        self.values['all_values']['InternetService'] = le.fit_transform(self.values['all_values']['InternetService'])
+        self.values['all_values']['OnlineSecurity'] = le.fit_transform(self.values['all_values']['OnlineSecurity'])
+        self.values['all_values']['OnlineBackup'] = le.fit_transform(self.values['all_values']['OnlineBackup'])
+        self.values['all_values']['DeviceProtection'] = le.fit_transform(self.values['all_values']['DeviceProtection'])
+        self.values['all_values']['TechSupport'] = le.fit_transform(self.values['all_values']['TechSupport'])
+        self.values['all_values']['StreamingTV'] = le.fit_transform(self.values['all_values']['StreamingTV'])
+        self.values['all_values']['StreamingMovies'] = le.fit_transform(self.values['all_values']['StreamingMovies'])
+        self.values['all_values']['Contract'] = le.fit_transform(self.values['all_values']['Contract'])
+        self.values['all_values']['PaperlessBilling'] = le.fit_transform(self.values['all_values']['PaperlessBilling'])
+        self.values['all_values']['PaymentMethod'] = le.fit_transform(self.values['all_values']['PaymentMethod'])
+        self.values['all_values']['Churn'] = le.fit_transform(self.values['all_values']['Churn'])

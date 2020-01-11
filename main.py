@@ -1,4 +1,4 @@
-from utils import statistics
+from utils import statistics, classification
 from utils.data import Data
 
 
@@ -9,8 +9,10 @@ class Main:
     def main(self):
         self.data.get_data()
         self.data.fill_missing_values()
+        self.data.encode_values()
         self.data.get_all_inputs()
         self.data.get_all_classes()
+        self.data.split_data()
 
         statistics.count_values(self.data)
         statistics.count_values_in_column(self.data)
