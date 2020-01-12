@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
 
 class Data:
@@ -35,7 +35,7 @@ class Data:
             'test_inputs': None,
             'train_classes': None,
             'test_classes': None,
-            'all_inputs_2d': None
+            'onehot': None
         }
 
     def get_data(self):
@@ -76,3 +76,8 @@ class Data:
         self.values['all_values']['PaperlessBilling'] = le.fit_transform(self.values['all_values']['PaperlessBilling'])
         self.values['all_values']['PaymentMethod'] = le.fit_transform(self.values['all_values']['PaymentMethod'])
         self.values['all_values']['Churn'] = le.fit_transform(self.values['all_values']['Churn'])
+
+    def onehot_values(self):
+        ohe = OneHotEncoder()
+        ohe.fit(self.values['all_values'])
+        self.values['onehot'] = pd.DataFrame(ohe.transform(self.values['all_values']).toarray())

@@ -1,4 +1,4 @@
-from utils import statistics, classification, clustering
+from utils import statistics, classification, clustering, association_rules
 from utils.data import Data
 
 
@@ -10,6 +10,7 @@ class Main:
         self.data.get_data()
         self.data.fill_missing_values()
         self.data.encode_values()
+        self.data.onehot_values()
         self.data.get_all_inputs()
         self.data.get_all_classes()
         self.data.split_data()
@@ -29,6 +30,8 @@ class Main:
         classification.neural_network(self.data)
         classification.random_forest(self.data)
         classification.svm(self.data)
+
+        association_rules.apriori_module(self.data)
 
 
 if __name__ == '__main__':
