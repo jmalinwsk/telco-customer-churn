@@ -76,8 +76,3 @@ class Data:
         self.values['all_values']['PaperlessBilling'] = le.fit_transform(self.values['all_values']['PaperlessBilling'])
         self.values['all_values']['PaymentMethod'] = le.fit_transform(self.values['all_values']['PaymentMethod'])
         self.values['all_values']['Churn'] = le.fit_transform(self.values['all_values']['Churn'])
-
-    def change_to_2d(self):
-        pca = PCA(n_components=20)
-        data = pca.fit_transform(self.values['all_inputs'])
-        self.values['all_inputs_2d'] = pd.DataFrame(data=data, columns=['x', 'y'])
