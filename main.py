@@ -1,4 +1,4 @@
-from utils import statistics, classification, clustering, association_rules
+from utils import statistics, classificators, clustering, association_rules
 from utils.data import Data
 
 
@@ -9,11 +9,7 @@ class Main:
     def main(self):
         self.data.get_data()
         self.data.fill_missing_values()
-        self.data.encode_values()
         self.data.onehot_values()
-        self.data.get_all_inputs()
-        self.data.get_all_classes()
-        self.data.split_data()
 
         statistics.count_values(self.data)
         statistics.count_values_in_column(self.data)
@@ -23,15 +19,19 @@ class Main:
         statistics.min_value(self.data)
         statistics.max_value(self.data)
 
-        classification.decision_tree(self.data)
-        classification.naive_bayes(self.data)
-        classification.k_nn(self.data, 10)
-        classification.k_nn(self.data, 50)
-        classification.neural_network(self.data)
-        classification.random_forest(self.data)
-        classification.svm(self.data)
-
         association_rules.apriori_module(self.data)
+
+        self.data.encode_values()
+        self.data.get_all_inputs()
+        self.data.get_all_classes()
+        self.data.split_data()
+        classificators.decision_tree(self.data)
+        classificators.naive_bayes(self.data)
+        classificators.k_nn(self.data, 10)
+        classificators.k_nn(self.data, 50)
+        classificators.neural_network(self.data)
+        classificators.random_forest(self.data)
+        classificators.svm(self.data)
 
 
 if __name__ == '__main__':
