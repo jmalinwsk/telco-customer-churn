@@ -8,6 +8,7 @@ class Data:
     def __init__(self):
         self.values = {
             'all_values': None,
+            'apriori_values': None,
             'columns': [
                 'gender',
                 'SeniorCitizen',
@@ -42,6 +43,10 @@ class Data:
         self.values['all_values'] = pd.read_csv(
             'database/WA_Fn-UseC_-Telco-Customer-Churn.csv',
             na_values=self.values['missing_values']).drop(columns=['customerID'])
+        self.values['apriori_values'] = pd.read_csv(
+            'database/WA_Fn-UseC_-Telco-Customer-Churn.csv',
+            na_values=self.values['missing_values'])\
+            .drop(columns=['customerID', 'tenure', 'PhoneService', 'MonthlyCharges', 'TotalCharges'])
 
     def fill_missing_values(self):
         median = self.values['all_values'].median()
@@ -80,4 +85,4 @@ class Data:
     def onehot_values(self):
         ohe = OneHotEncoder()
         ohe.fit(self.values['all_values'])
-        self.values['onehot'] = pd.DataFrame(ohe.transform(self.values['all_values']).toarray())
+        self.values['onehot'] = pd.get_dummies(self.values['apriori_values'])
