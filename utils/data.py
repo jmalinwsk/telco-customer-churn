@@ -68,6 +68,7 @@ class Data:
         self.values['all_values']['gender'] = le.fit_transform(self.values['all_values']['gender'])
         self.values['all_values']['Partner'] = le.fit_transform(self.values['all_values']['Partner'])
         self.values['all_values']['Dependents'] = le.fit_transform(self.values['all_values']['Dependents'])
+        self.values['all_values']['tenure'] = le.fit_transform(self.values['all_values']['tenure'])
         self.values['all_values']['PhoneService'] = le.fit_transform(self.values['all_values']['PhoneService'])
         self.values['all_values']['MultipleLines'] = le.fit_transform(self.values['all_values']['MultipleLines'])
         self.values['all_values']['InternetService'] = le.fit_transform(self.values['all_values']['InternetService'])
@@ -83,6 +84,4 @@ class Data:
         self.values['all_values']['Churn'] = le.fit_transform(self.values['all_values']['Churn'])
 
     def onehot_values(self):
-        ohe = OneHotEncoder()
-        ohe.fit(self.values['all_values'])
         self.values['onehot'] = pd.get_dummies(self.values['apriori_values'])
