@@ -1,4 +1,10 @@
 # Telco Customer Churn
-Uni project related to data mining.
+Project related to data mining using focused customer retention programs' database.
 
-****Used database:**** https://www.kaggle.com/blastchar/telco-customer-churn
+# Packages used
+- TensorFlow
+- scikit-learn
+- mlxend
+
+# Database 
+https://www.kaggle.com/blastchar/telco-customer-churn
